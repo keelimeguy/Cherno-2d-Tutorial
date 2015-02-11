@@ -7,6 +7,11 @@ public class BasicTile extends Tile {
 
 	private boolean isSolid;
 
+	/**
+	 * Creates a new BasicTile.
+	 * @param sprite : The sprite of the tile.
+	 * @param isSolid : True if the tile will be solid, false otherwise.
+	 */
 	public BasicTile(Sprite sprite, boolean isSolid) {
 		super(sprite);
 		this.isSolid = isSolid;

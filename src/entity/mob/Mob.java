@@ -1,8 +1,12 @@
 package game2d.entity.mob;
 
 import game2d.entity.Entity;
+import game2d.entity.projectile.Projectile;
 import game2d.graphics.Screen;
 import game2d.graphics.Sprite;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Mob extends Entity {
 
@@ -12,8 +16,8 @@ public abstract class Mob extends Entity {
 
 	/**
 	 * Moves the player and updates its direction
-	 * @param dx : The change in x of the player's location
-	 * @param dy : The change in y of the player's location
+	 * @param dx : The change in x of the mob's location
+	 * @param dy : The change in y of the mob's location
 	 */
 	public void move(int dx, int dy) {
 
@@ -32,22 +36,20 @@ public abstract class Mob extends Entity {
 	public void update() {
 	}
 
+	protected void shoot(int x, int y, double dir) {
+	}
+
 	public void render(Screen screen) {
 	}
 
 	/**
 	 * Determines if the mob will collide should it move in the given direction
+	 * @param dx : The change in x of the mob's location
+	 * @param dy : The change in y of the mob's location
 	 * @return 
 	 * True if it will collide, false otherwise
 	 */
-	private boolean collision(int dx, int dy) {
-		boolean solid = false;
-		for (int c = 0; c < 4; c++) {
-			int xt = ((x + dx) + c % 2 * 13 - 7) >> 4;
-			int yt = ((y + dy) + c / 2 * 12 + 3) >> 4;
-			if (level.getTile(xt, yt).solid()) solid = true;
-		}
-		return solid;
-		//return level.getTile((x + dx) >> 4, (y + dy) >> 4).solid();
+	protected boolean collision(int dx, int dy) {
+		return level.getTile((x + dx) >> 4, (y + dy) >> 4).solid();
 	}
 }

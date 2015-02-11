@@ -1,12 +1,20 @@
 package game2d.level;
 
+import game2d.entity.Entity;
+import game2d.entity.projectile.Projectile;
 import game2d.graphics.Screen;
 import game2d.level.tile.Tile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Level {
 
 	protected int width, height;
 	protected int[] tiles;
+
+	private List<Entity> entities = new ArrayList<Entity>();
+	private List<Projectile> projectiles = new ArrayList<Projectile>();
 
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
@@ -37,7 +45,26 @@ public abstract class Level {
 	protected void loadLevel(String path) {
 	}
 
+	/**
+	 * Gets the projectile list for the level and returns it.
+	 * @return A List<Projectile> object, containing the projectiles that have been added into the level
+	 */
+	public List<Projectile> getProjectiles() {
+		return projectiles;
+	}
+
+	/**
+	 * Updates the level by updating every entity within the level.
+	 */
 	public void update() {
+
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).update();
+		}
+
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).update();
+		}
 	}
 
 	private void time() {
@@ -69,6 +96,29 @@ public abstract class Level {
 			}
 		}
 
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).render(screen);
+		}
+
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).render(screen);
+		}
+	}
+
+	/**
+	 * Adds an entity to the level.
+	 * @param e : The entity to be added.
+	 */
+	public void add(Entity e) {
+		entities.add(e);
+	}
+
+	/**
+	 * Adds a projectile to the level, separate from other entities
+	 * @param p : The projectile to be added.
+	 */
+	public void addProjectile(Projectile p) {
+		projectiles.add(p);
 	}
 
 	/**

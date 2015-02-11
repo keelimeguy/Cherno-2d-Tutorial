@@ -36,7 +36,7 @@ public abstract class Entity {
 
 	/**
 	 * Initiate the current level for the entity
-	 * @param level : The level where the entity is present
+	 * @param level : The level where the entity will be present
 	 * 
 	 */
 	public void init(Level level) {

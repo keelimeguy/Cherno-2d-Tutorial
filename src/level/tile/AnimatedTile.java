@@ -3,6 +3,9 @@ package game2d.level.tile;
 import game2d.graphics.Screen;
 import game2d.graphics.Sprite;
 
+/**
+ * My class for tiles with an animated sprite, not yet implemented
+ */
 public class AnimatedTile extends Tile {
 	
 	public AnimatedTile(Sprite sprite) {

@@ -8,7 +8,10 @@ public class Sprite {
 	private SpriteSheet sheet;
 
 	public static Sprite voidSprite = new Sprite(16, 0x1b87e0);
-	
+
+	// Projectile sprites
+	public static Sprite wizardProjectile = new Sprite(16, 0, 0, SpriteSheet.projectile_wizard);
+
 	// Spawn level sprites
 	public static Sprite spawnGrass = new Sprite(16, 0, 0, SpriteSheet.spawn_tiles);
 	public static Sprite spawnHedge = new Sprite(16, 1, 0, SpriteSheet.spawn_tiles);
@@ -18,7 +21,7 @@ public class Sprite {
 	public static Sprite spawnMultiBrick = new Sprite(16, 0, 2, SpriteSheet.spawn_tiles);
 
 	// Player sprites:
-	
+
 	//up
 	public static Sprite player00 = new Sprite(32, 3, 0, SpriteSheet.tiles);
 	public static Sprite player01 = new Sprite(32, 3, 1, SpriteSheet.tiles);

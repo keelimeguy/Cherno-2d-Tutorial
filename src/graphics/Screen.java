@@ -1,5 +1,6 @@
 package game2d.graphics;
 
+import game2d.entity.projectile.Projectile;
 import game2d.level.tile.Tile;
 
 public class Screen {
@@ -50,6 +51,31 @@ public class Screen {
 				if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa < 0) xa = 0;
 				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+			}
+		}
+	}
+
+	/**
+	 * Renders a given sprite on the screen
+	 * @param xp : The x coordinate of the tile (in tile units)
+	 * @param yp : The y coordinate of the tile (in tile units)
+	 * @param tile : The tile to render
+	 */
+	public void renderProjectile(int xp, int yp, Projectile p) {
+
+		// Updates the position given the screen offset
+		yp -= yOffset;
+		xp -= xOffset;
+
+		// Draws the tile pixels to the screen at the appropriate position
+		for (int y = 0; y < p.getSpriteSize(); y++) {
+			int ya = y + yp;
+			for (int x = 0; x < p.getSpriteSize(); x++) {
+				int xa = x + xp;
+				if (xa < -p.getSpriteSize() || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < 0) xa = 0;
+				int col = p.getSprite().pixels[x + y * p.getSpriteSize()];
+				if (col != 0xffff00ff) pixels[xa + ya * width] = col;
 			}
 		}
 	}

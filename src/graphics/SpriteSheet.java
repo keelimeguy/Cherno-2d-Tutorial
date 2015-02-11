@@ -13,6 +13,7 @@ public class SpriteSheet {
 
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 288);
 	public static SpriteSheet spawn_tiles = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
+	public static SpriteSheet projectile_wizard = new SpriteSheet("/textures/sheets/projectiles/wizard.png", 48);
 
 	/**
 	 * Creates a sprite sheet from a resource path

@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable {
 
 	public static int width = 300;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
+	public static int scale = 3; // The game will be scaled up by this factor, so the actual window width and height will be the above values times this value
 	public static String title = "2DGame";
 
 	private Thread thread;
@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable {
 		key = new Keyboard();
 		level = Level.spawn;
 
-		//level = new RandomLevel(64, 64);-
+		//level = new RandomLevel(64, 64);
 		player = new Player(19 * 16, 62 * 16, key);
 		player.init(level);
 
@@ -57,6 +57,22 @@ public class Game extends Canvas implements Runnable {
 		Mouse mouse = new Mouse();
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
+	}
+
+	/**
+	 * Returns the height of the window with scaling.
+	 * @return The width as an int value
+	 */
+	public static int getWindowWidth() {
+		return width * scale;
+	}
+
+	/**
+	 * Returns the height of the window with scaling.
+	 * @return The height as an int value
+	 */
+	public static int getWindowHeight() {
+		return height * scale;
 	}
 
 	/**
@@ -125,6 +141,7 @@ public class Game extends Canvas implements Runnable {
 	public void update() {
 		key.update();
 		player.update();
+		level.update();
 	}
 
 	/**
