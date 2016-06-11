@@ -1,7 +1,11 @@
 package game2d.graphics;
 
+import game2d.Game;
+
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 
@@ -32,7 +36,9 @@ public class SpriteSheet {
 	 */
 	private void load() {
 		try {
-			BufferedImage image = ImageIO.read(SpriteSheet.class.getResource(path));
+			URL location = Game.class.getProtectionDomain().getCodeSource().getLocation();
+			File file = new File(location.getFile());
+			BufferedImage image = ImageIO.read(new File(file.getParentFile() + "/res" + path));
 			int w = image.getWidth();
 			int h = image.getHeight();
 			image.getRGB(0, 0, w, h, pixels, 0, w);
