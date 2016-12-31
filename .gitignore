@@ -2,23 +2,16 @@
 Thumbs.db
 ehthumbs.db
 
-# Open Emacs files
-\#*\#
-.\#*
-
-# Text editor backups
-*~
-
-# Compiled files
-*.class
-dist
-build
-
 # Folder config file
 Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+# Project files
+*.class
+*.jar
+bin/
 
 # Windows Installer files
 *.cab
