@@ -14,7 +14,7 @@ public class Player extends Mob {
 	private Sprite sprite;
 	private int anim = 0;
 	private boolean walking = false;
-	
+
 	private int fireRate = 0;
 	Projectile p;
 
@@ -47,8 +47,8 @@ public class Player extends Mob {
 	 */
 	public void update() {
 
-		if(fireRate>0) fireRate--;
-		
+		if (fireRate > 0) fireRate--;
+
 		// Increase the animation step, but don't let it increase indefinitely
 		if (anim < 7500)
 			anim++;

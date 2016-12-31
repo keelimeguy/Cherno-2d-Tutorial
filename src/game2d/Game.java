@@ -1,19 +1,18 @@
 package game2d;
 
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+
+import javax.swing.JFrame;
+
 import game2d.entity.mob.Player;
 import game2d.graphics.Screen;
 import game2d.input.Keyboard;
 import game2d.input.Mouse;
 import game2d.level.Level;
-
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-
-import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +23,7 @@ public class Game extends Canvas implements Runnable {
 	public static String title = "2DGame";
 
 	private Thread thread;
-	private JFrame frame;
+	private static JFrame frame;
 	private Keyboard key;
 	private Level level;
 	private Player player;
@@ -64,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 	 * @return The width as an int value
 	 */
 	public static int getWindowWidth() {
-		return width * scale;
+		return frame.getContentPane().getWidth();
 	}
 
 	/**
@@ -72,7 +71,7 @@ public class Game extends Canvas implements Runnable {
 	 * @return The height as an int value
 	 */
 	public static int getWindowHeight() {
-		return height * scale;
+		return frame.getContentPane().getHeight();
 	}
 
 	/**
@@ -181,13 +180,13 @@ public class Game extends Canvas implements Runnable {
 		System.setProperty("sun.awt.noerasebackground", "true");
 		// Create the game
 		Game game = new Game();
-		game.frame.setResizable(true);
-		game.frame.setTitle(Game.title);
-		game.frame.add(game);
-		game.frame.pack();
-		game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.frame.setLocationRelativeTo(null);
-		game.frame.setVisible(true);
+		Game.frame.setResizable(true);
+		Game.frame.setTitle(Game.title);
+		Game.frame.add(game);
+		Game.frame.pack();
+		Game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Game.frame.setLocationRelativeTo(null);
+		Game.frame.setVisible(true);
 
 		// Start the game
 		game.start();

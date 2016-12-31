@@ -1,12 +1,8 @@
 package game2d.entity.mob;
 
 import game2d.entity.Entity;
-import game2d.entity.projectile.Projectile;
 import game2d.graphics.Screen;
 import game2d.graphics.Sprite;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Mob extends Entity {
 

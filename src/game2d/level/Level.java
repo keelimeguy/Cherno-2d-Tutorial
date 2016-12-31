@@ -67,9 +67,6 @@ public abstract class Level {
 		}
 	}
 
-	private void time() {
-	}
-
 	/**
 	 * Renders all the tiles on the screen
 	 * @param xScroll : The scroll offset of the screen in the x direction (in pixels)
